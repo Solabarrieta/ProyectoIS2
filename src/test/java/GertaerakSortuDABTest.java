@@ -1,74 +1,190 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
-import businessLogic.BLFacade;
 import dataAccess.DataAccess;
+import domain.Event;
+import domain.Team;
+import test.dataAccess.TestDataAccess;
 
 public class GertaerakSortuDABTest {
-	@Mock
-	DataAccess dao;
+	protected static EntityManager  db;
 	
-	@InjectMocks
-	BLFacade sut;
+	DataAccess dao = new DataAccess();
 	
-	//static DataAccess sut=new DataAccess();
+	TestDataAccess testDa = new TestDataAccess();
 	
-	/*@Test
-	public void test1() {
-		String description = "Athletic-Real";
-		
+	//Clases de equivalencia válidas
+	
+	/*
+	 * El evento existe en la base de datos
+	 * El evento no se inserta
+	 * La función devuelve false
+	 */
+
+	@Test
+	public void test1() { 
+		System.out.println("Test 1");
+		String description = "Athletic-Real Sociedad";
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date eventDate=null;
 		try {
-			eventDate = sdf.parse("20/10/2022");
+			eventDate = sdf.parse("31/10/2022");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String sport = "Futbol";
+		//boolean expected = false;
+		boolean obtained = dao.gertaerakSortu(description, eventDate, sport);
+		assertFalse(obtained);
+	}
+	
+	
+	/*
+	 * El evento no existe en la base de datos
+	 * El evento se inserta
+	 * La función devuelve true
+	 */
+	@Test
+	public void test2() { 
+		System.out.println("Test 2");
+		String description = "Barcelona-Real Sociedad";
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date eventDate=null;
+		try {
+			eventDate = sdf.parse("31/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String sport = "Futbol";
+		testDa.open();
+		boolean obtained = dao.gertaerakSortu(description, eventDate, sport);
+		assertTrue(obtained);
+		testDa.removeEvent(description);
+		testDa.close();
+	}
+	
+	
+	
+	//Clases de equivalencia No válidas
+	
+	@Test
+	public void descriptionNullTest() {
+		System.out.println("Test description null");
+		String description = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date eventDate=null;
+		try {
+			eventDate = sdf.parse("31/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String sport = "Futbol";
+		try {
+			dao.gertaerakSortu(description, eventDate, sport);
+			fail("Description null");
+		}catch(Exception e) {
+			e.printStackTrace();
+			assertEquals(e.getClass(), java.lang.NullPointerException.class);
+		}
 		
-		boolean obtenido = sut.gertaerakSortu(description, eventDate, sport);
-		boolean esperado = true; 
+	}
+	
+	/*
+	 * La base de datos permite fechas nulas. Comparar un null pointer exception, porque se guarda bien en la bd cuando la fecha es nula.
+	 
+	@Test
+	public void eventDateNullTest() {
+		System.out.println("Test event date null");
+		String description = "Athletic-Real";
+		Date eventDate = null;
+		String sport = "Futbol";
+		try {
+			dao.gertaerakSortu(description, eventDate, sport);
+			//fail("Event Date null");
+		}catch(Exception e) {
+			e.printStackTrace();
+			assertEquals(e.getClass(), java.lang.NullPointerException.class);
+		}
 		
-		assertEquals(esperado, obtenido);
 	}*/
 	
 	@Test
-	public void test2() {
+	public void sportNullTest() {
+		System.out.println("Test sport null");
 		String description = "Athletic-Real";
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		Date eventDate=null;
 		try {
-			eventDate = sdf.parse("20/10/2022");
+			eventDate = sdf.parse("31/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String sport = null;
+		try {
+			dao.gertaerakSortu(description, eventDate, sport);
+			fail("Sport null");
+		}catch(Exception e) {
+			e.printStackTrace();
+			assertEquals(e.getClass(), java.lang.IllegalArgumentException.class);
+		}
+		
+	}
+	
+	@Test
+	public void eventDateLessThanTodayTest() {
+		System.out.println("Test event date before today");
+		String description = "Real-Barcelona";
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date eventDate=null;
+		try {
+			eventDate = sdf.parse("28/10/2022");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String sport = "Futbol";
-
+		testDa.open();
+		boolean obtained = dao.gertaerakSortu(description, eventDate, sport);
+		assertTrue(obtained);
+		testDa.removeEvent(description);
+		testDa.close();
+		
+	}
+	
+	@Test
+	public void sportNotInSportClassTest() {
+		System.out.println("Test sport not in sport class");
+		String description = "Athletic-Real";
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date eventDate=null;
 		try {
-			Mockito.doReturn(true)
-			 .when(dao)
-			 .gertaerakSortu(Mockito.anyString(), Mockito.any(Date.class), Mockito.anyString());
-			
-			boolean obtenido = sut.gertaerakSortu(description, eventDate, sport);
-			boolean esperado = true;
-			assertEquals(esperado, obtenido);
-			
-		}catch (Exception e){
+			eventDate = sdf.parse("31/10/2022");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		String sport = "patata";
+		//boolean expected = false;
+		boolean obtained = dao.gertaerakSortu(description, eventDate, sport);
+		assertFalse(obtained);
 	}
+
 
 }
