@@ -225,7 +225,7 @@ public class DataAccess  {
 			Registered reg2 = new Registered("andrea", "123", 1111);
 			Registered reg3 = new Registered("markel", "123", 1111);
 			Registered reg4 = new Registered("mikel", "123", 1111);
-									
+								
 			if (Locale.getDefault().equals(new Locale("es"))) {
 				q1=ev1.addQuestion("¿Quién ganará el partido?",1);
 				q2=ev1.addQuestion("¿Quién meterá el primer gol?",2);

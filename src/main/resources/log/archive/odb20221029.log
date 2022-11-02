@@ -4459,3 +4459,53 @@ Type domain.Apustua is not enhanced.
 [2022-10-29 19:36:15 #16 type] 
 Type domain.Admin is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-10-29 19:46:24 #1 store] 
+Database 'C:\Users\uroa3\Desktop\Nueva carpeta\ProyectoIS2\src\main\resources\bets.temp' is opened by 16156@LAPTOP-SDHIQ3T1
+
+[2022-10-29 19:46:24 #2 type] 
+Type domain.Team is not enhanced.
+
+[2022-10-29 19:46:24 #3 type] 
+Type domain.Event is not enhanced.
+
+[2022-10-29 19:46:24 #4 type] 
+Type domain.User is not enhanced.
+
+[2022-10-29 19:46:24 #5 type] 
+Type domain.Registered is not enhanced.
+
+[2022-10-29 19:46:24 #6 type] 
+Type domain.Sport is not enhanced.
+
+[2022-10-29 19:46:24 #7 type] 
+Type domain.Question is not enhanced.
+
+[2022-10-29 19:46:24 #8 type] 
+Type domain.Elkarrizketa is not enhanced.
+
+[2022-10-29 19:46:24 #9 type] 
+Type domain.Message is not enhanced.
+
+[2022-10-29 19:46:24 #10 type] 
+Type domain.KirolEstatistikak is not enhanced.
+
+[2022-10-29 19:46:24 #11 type] 
+Type domain.Jarraitzailea is not enhanced.
+
+[2022-10-29 19:46:24 #12 type] 
+Type domain.ApustuAnitza is not enhanced.
+
+[2022-10-29 19:46:24 #13 type] 
+Type domain.Transaction is not enhanced.
+
+[2022-10-29 19:46:24 #14 type] 
+Type domain.Quote is not enhanced.
+
+[2022-10-29 19:46:24 #15 type] 
+Type domain.Apustua is not enhanced.
+
+[2022-10-29 19:46:24 #16 type] 
+Type domain.Admin is not enhanced.
+

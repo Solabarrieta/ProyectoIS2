@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 import configuration.ConfigXML;
 import domain.Event;
 import domain.Question;
+import domain.Registered;
 
 public class TestDataAccess {
 	protected  EntityManager  db;

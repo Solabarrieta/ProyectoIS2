@@ -1,0 +1,53 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-10-30 20:02:55 #1 store] 
+Database 'C:\Users\uroa3\Desktop\Nueva carpeta\ProyectoIS2\src\main\resources\bets.temp' has been recovered (tr. 53-56)
+
+[2022-10-30 20:02:55 #2 store] 
+Database 'C:\Users\uroa3\Desktop\Nueva carpeta\ProyectoIS2\src\main\resources\bets.temp' is opened by 15244@LAPTOP-SDHIQ3T1
+
+[2022-10-30 20:02:55 #3 type] 
+Type domain.Team is not enhanced.
+
+[2022-10-30 20:02:55 #4 type] 
+Type domain.Event is not enhanced.
+
+[2022-10-30 20:02:55 #5 type] 
+Type domain.User is not enhanced.
+
+[2022-10-30 20:02:55 #6 type] 
+Type domain.Registered is not enhanced.
+
+[2022-10-30 20:02:55 #7 type] 
+Type domain.Sport is not enhanced.
+
+[2022-10-30 20:02:55 #8 type] 
+Type domain.Question is not enhanced.
+
+[2022-10-30 20:02:55 #9 type] 
+Type domain.Elkarrizketa is not enhanced.
+
+[2022-10-30 20:02:55 #10 type] 
+Type domain.Message is not enhanced.
+
+[2022-10-30 20:02:55 #11 type] 
+Type domain.KirolEstatistikak is not enhanced.
+
+[2022-10-30 20:02:55 #12 type] 
+Type domain.Jarraitzailea is not enhanced.
+
+[2022-10-30 20:02:55 #13 type] 
+Type domain.ApustuAnitza is not enhanced.
+
+[2022-10-30 20:02:55 #14 type] 
+Type domain.Transaction is not enhanced.
+
+[2022-10-30 20:02:55 #15 type] 
+Type domain.Quote is not enhanced.
+
+[2022-10-30 20:02:55 #16 type] 
+Type domain.Apustua is not enhanced.
+
+[2022-10-30 20:02:55 #17 type] 
+Type domain.Admin is not enhanced.
+
